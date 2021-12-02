@@ -55,23 +55,24 @@ class Timer extends React.Component{
 
     startInterval(){
 
-        let delay = 1000;
+        let delay = 10;
         const newYear = Date.parse("2021-12-31");
-        const toDay = Date.now();
-        const totalSeconds = (newYear - toDay) / 1000;
-        
-        this.intervalID = setInterval(()=>{
+
+
+        setInterval(()=>{
+            const toDay = Date.now();
+            const totalSeconds = (newYear - toDay) / 1000;
             let seconds = Math.floor(totalSeconds % 60);
             let minutes = Math.floor((totalSeconds / 60) % 60);
             let hours = Math.floor((totalSeconds / 3600) % 24);
             let days = Math.floor(totalSeconds / 3600 / 24);
-
             this.setState({
                 seconds: seconds,
                 minutes: minutes,
                 days: days,
                 hours: hours
             });
+            console.log(seconds);
 
         },delay);
     }
